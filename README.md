@@ -4,7 +4,7 @@ CIS300 System Programming - Spring 2018
 Course materials
 ---
 
-- Course overview: [[slides](Lecture1.pptx)], [[slides2](overview.pdf)]
+- Course overview: [[slides](Lecture1.pdf)], [[slides2](overview.pdf)]
 
 <!--
 
