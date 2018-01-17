@@ -4,7 +4,7 @@ CIS300 System Programming - Spring 2018
 Syllabus
 ---
 
-Syllabus file [[pdf](syllabus-cis300.pdf)]
+- Syllabus file [[pdf](syllabus-cis300.pdf)]
 
 Course materials
 ---
