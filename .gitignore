@@ -1,1 +1,8 @@
 *.pptx
+
+a.out
+*.o
+*.swp
+*.swn
+*.swm
+

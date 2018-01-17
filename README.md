@@ -10,6 +10,8 @@ Course materials
 ---
 
 - Course overview: [[slides](Lecture1.pdf)], [[slides2](overview.pdf)]
+- Virtualbox/Ubuntu setup: [[tutorial](VirtualBoxTutorial.pdf)]
+
 
 <!--
 
