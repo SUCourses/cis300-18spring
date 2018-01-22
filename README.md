@@ -9,8 +9,9 @@ Syllabus
 Course materials
 ---
 
-- Course overview: [[slides](Lecture1.pdf)], [[slides2](overview.pdf)]
-- Virtualbox/Ubuntu setup: [[tutorial](VirtualBoxTutorial.pdf)]
+- Lecture 1: Course overview: [[slides](Lecture1.pdf)], [[slides2](overview.pdf)]
+- Lecture 2: Files and directories: [[slides](Lecture2.pdf)]
+    - Virtualbox/Ubuntu setup: [[tutorial](VirtualBoxTutorial.pdf)]
 
 
 <!--
