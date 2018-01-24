@@ -9,10 +9,11 @@ Syllabus
 Course materials
 ---
 
-- Lecture 1: Course overview: [[slides](Lecture1.pdf)], [[slides2](overview.pdf)]
-- Lecture 2: Files and directories: [[slides](Lecture-T1.pdf)]
-- Lecture 3: File permission: [[slides](Lecture-T1.pdf)]
-    - Virtualbox/Ubuntu setup: [[tutorial](VirtualBoxTutorial.pdf)]
+- Course overview (Lecture 1): [[slides](Lecture1.pdf)], [[slides2](overview.pdf)]
+- Topic 1: Bash [[slides](Lecture-T1.pdf)]
+    - Lecture 2: Files and directories
+    - Lecture 3: File permission 
+        - Virtualbox/Ubuntu setup: [[tutorial](VirtualBoxTutorial.pdf)]
 
 
 <!--
