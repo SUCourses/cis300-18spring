@@ -14,7 +14,7 @@ Course materials
     - Lecture 2: Files and directories
     - Lecture 3: File permission 
         - Virtualbox/Ubuntu setup: [[tutorial](VirtualBoxTutorial.pdf)]
-    - Lecture 4: Text editing 
+    - Lecture 5: Text editing 
         - Installing vim: [[pdf](install_vim.pdf)]
 
 
