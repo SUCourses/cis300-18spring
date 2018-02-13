@@ -17,6 +17,7 @@ Course materials
     - Lecture 4: Text editing 
         - Installing vim: [[pdf](install_vim.pdf)]
     - Lecture 5,6,7: Shell scripting
+    - Lecture 8: Grep and regular expression
 
 
 <!--
