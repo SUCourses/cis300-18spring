@@ -18,7 +18,7 @@ Course materials
         - Installing vim: [[pdf](install_vim.pdf)]
     - Lecture 5,6,7: Shell scripting
     - Lecture 8: Grep and regular expression
-    - Lecture 9: Command execution
+    - Lecture 9: Command execution and processes
 
 <!--
 
