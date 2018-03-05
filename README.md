@@ -20,6 +20,8 @@ Course materials
     - Lecture 8: Grep and regular expression
     - Lecture 9, 10: Command execution and processes
     - Lecture 11, 12: Loops and functions [[slides](Lecture-TA-loops.pptx)]
+- Topic 2: C/C++ programming [[slides](Lecture-T2.pdf)]
+    - Lecture 13: Helloworld C and GCC
 
 <!--
 
