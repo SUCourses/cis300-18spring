@@ -1,4 +1,6 @@
-#include <stdio.h>
+#include<stdio.h>
+
+
 void foo(){
-	printf("foo();\n");
+   printf("in function foo();\n");
 }
