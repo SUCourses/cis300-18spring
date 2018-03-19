@@ -1,0 +1,15 @@
+exec: c
+	./a.out
+
+c: assem link
+
+link:
+	@gcc file1.o file2.o
+
+assem:
+	gcc -c file1.c
+	gcc -c file2.c 
+
+clean:
+	rm *.o *.out
+

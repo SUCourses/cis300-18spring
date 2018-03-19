@@ -23,6 +23,7 @@ Course materials
 - Topic 2: C/C++ programming [[slides](Lecture-T2.pdf)]
     - Lecture 13: Helloworld C 
     - Lecture 14: GCC
+    - Lecture 15: make and Makefile
 
 <!--
 
