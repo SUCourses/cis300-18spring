@@ -1,7 +1,5 @@
-SRCS = file1.c file2.c
-OBJS = $(SRCS:.c=.o)
-CFLAGS = -g -Iheaders
+LDFLAGS =  -L. -lxxx
+SRCS = file.c
 
-link: $(OBJS)
-	$(CC) $(LDFLAGS) $(OBJS)
-
+link: 
+	$(CC) $(LDFLAGS) $(SRCS)
