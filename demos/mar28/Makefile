@@ -5,3 +5,7 @@ CFLAGS = -g
 all: buggy.o
 	$(CC) $(OBJS)
 	./a.out
+
+clean:
+	rm *.o *.out
+
