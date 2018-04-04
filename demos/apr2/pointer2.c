@@ -1,3 +1,5 @@
+#include<stdlib.h>
+
 int main() {   
     int*    x;  // Allocate the pointers x and y
     int*    y;  // (but not the pointees)

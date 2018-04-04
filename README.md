@@ -25,7 +25,7 @@ Course materials
     - Lecture 14: GCC
     - Lecture 15, 16: make and Makefile
     - Lecture 17: GDB
-    - Lecture 18: Pointer in C
+    - Lecture 18,19: C pointer and data types
 
 <!--
 
