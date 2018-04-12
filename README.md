@@ -27,6 +27,7 @@ Course materials
     - Lecture 17: GDB
     - Lecture 18,19: C pointer and data types
     - Lecture 20: File I/O
+        - Exercise solution: [[src](demos/apr11/exercise.c)]
 
 <!--
 
