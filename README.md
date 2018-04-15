@@ -1,6 +1,27 @@
 CIS300 System Programming - Spring 2018
 ===
 
+<!--
+
+Section 1, Bash and Vim
+---
+
+- Lecture 1,2,3,4 are on Blackboard.
+- Version [[webpage](1_bash.md)]
+- Version [[pdf](1_bash.pdf)]
+
+Section 2, C/C++, Gcc, Makefile and Gdb
+---
+
+- Version [[webpage](2_c.md)]
+- Version [[pdf](2_c.pdf)]
+
+Mock exam (with solutions)
+---
+
+- [[link](mock_exam/mock1-withanswers.md)]
+
+-->
 Syllabus
 ---
 
@@ -26,27 +47,6 @@ Course materials
     - Lecture 15, 16: make and Makefile
     - Lecture 17: GDB
     - Lecture 18,19: C pointer and data types
-    - Lecture 20: File I/O
+    - Lecture 20,21: File I/O
         - Exercise solution: [[src](demos/apr11/exercise.c)]
 
-<!--
-
-Section 1, Bash and Vim
----
-
-- Lecture 1,2,3,4 are on Blackboard.
-- Version [[webpage](1_bash.md)]
-- Version [[pdf](1_bash.pdf)]
-
-Section 2, C/C++, Gcc, Makefile and Gdb
----
-
-- Version [[webpage](2_c.md)]
-- Version [[pdf](2_c.pdf)]
-
-Mock exam (with solutions)
----
-
-- [[link](mock_exam/mock1-withanswers.md)]
-
--->
