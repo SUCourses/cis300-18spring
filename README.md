@@ -49,5 +49,5 @@ Course materials
     - Lecture 18,19: C pointer and data types
     - Lecture 20,21: File I/O
         - Exercise solution: [[src](demos/apr11/exercise.c)]
-    - Lab `Myshell`: [[pdf](2_lab_myshell-h.pdf)]
+    - Lab `Myshell`: [[pdf](2_lab_myshell-h.pdf)],[[md](2_lab_myshell-h.md)]
 

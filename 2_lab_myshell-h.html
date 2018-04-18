@@ -65,7 +65,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>Makefile</p>
 <pre><code>SRCS = main_printf.c main_echo0.c main_echo.c main_cat.c myshell.c
 OBJS = $(SRCS:.c=.o)
-CFLAGS = -g -I..
+CFLAGS = -g -I.
 
 printf: $(OBJS)
     $(CC) main_$@.o myshell.o 
@@ -102,6 +102,7 @@ clean:
 <li>Write a main function in <code>main_printf.c</code>
 <ul>
 <li>The goal is to call <code>my_printf(&quot;Hello\n&quot;);</code> in <code>main_printf.c</code></li>
+<li>Put the following in file <code>header.h</code></li>
 </ul></li>
 </ul>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#if !defined(HEADER_H)</span>
@@ -117,8 +118,7 @@ clean:
 <span class="dt">void</span> my_echo(<span class="dt">int</span> fd, <span class="dt">char</span>* str);
 <span class="dt">void</span> my_printf(<span class="dt">char</span>* format_string);
 
-<span class="ot">#endif</span>
-</code></pre>
+<span class="ot">#endif</span></code></pre>
 <h2 id="implement-my_echo">3. Implement <code>my_echo</code></h2>
 <ul>
 <li>Write a library function <code>void my_echo(int fd, char* str)</code> in <code>myshell.c</code></li>
