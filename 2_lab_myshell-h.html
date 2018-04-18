@@ -97,13 +97,28 @@ clean:
 <ul>
 <li>Write a library function <code>void my_printf(char* str)</code> in <code>myshell.c</code>
 <ul>
-<li>write a function to get length of an array <code>int my_strlen(char* str)</code></li>
+<li>Write a function to get length of an array <code>int my_strlen(char* str)</code></li>
 </ul></li>
 <li>Write a main function in <code>main_printf.c</code>
 <ul>
 <li>The goal is to call <code>my_printf(&quot;Hello\n&quot;);</code> in <code>main_printf.c</code></li>
 </ul></li>
 </ul>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#if !defined(HEADER_H)</span>
+<span class="ot">#define HEADER_H</span>
+<span class="ot">#include&lt;stdio.h&gt;</span>
+<span class="ot">#include&lt;unistd.h&gt; </span><span class="co">//lseek, STDIN_FILENO</span>
+<span class="ot">#include&lt;stdlib.h&gt;</span>
+<span class="ot">#include &lt;fcntl.h&gt;</span>
+<span class="ot">#define FILE_MODE (S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)</span>
+
+<span class="dt">void</span> err_sys(<span class="dt">const</span> <span class="dt">char</span>* x);
+<span class="dt">int</span> my_strlen(<span class="dt">char</span>* format_string);
+<span class="dt">void</span> my_echo(<span class="dt">int</span> fd, <span class="dt">char</span>* str);
+<span class="dt">void</span> my_printf(<span class="dt">char</span>* format_string);
+
+<span class="ot">#endif</span>
+</code></pre>
 <h2 id="implement-my_echo">3. Implement <code>my_echo</code></h2>
 <ul>
 <li>Write a library function <code>void my_echo(int fd, char* str)</code> in <code>myshell.c</code></li>
