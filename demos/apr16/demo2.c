@@ -21,16 +21,6 @@ int main(int argc, char *argv[]) {
 
     if (val & O_APPEND)
         printf(", append");
-    if (val & O_NONBLOCK)
-        printf(", nonblocking");
-#if defined(O_SYNC)
-    if (val & O_SYNC)
-        printf(", synchronous writes");
-#endif
-#if !defined(_POSIX_C_SOURCE) && defined(O_FSYNC)
-    if (val & O_FSYNC)
-        printf(", synchronous writes");
-#endif
     putchar('\n');
     exit(0);
 }

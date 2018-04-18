@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+</head>
+<body>
+<h1 id="lab-myshell---impl.-your-own-shell-in-c">Lab: Myshell - Impl. your own shell in C</h1>
+<p>In this lab, you are asked to implement your own library to support the shell commands. We did an exercise in the last class where you implement basic <code>echo</code> command using File I/O functions in standard C library. In this lab, it is an extension to that exercise and you will implement shell commands for <code>cat</code>, redirection, <code>touch</code>.</p>
+<p>We call our shell commands with prefix <code>my_</code> and the following is what the outcome of this lab will look like. Note that we use <code>@</code> instead of <code>&gt;</code> to represent redirection in <code>myshell</code>.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">./my_cat</span> file1
+<span class="kw">./my_echo</span> Alice
+<span class="kw">./my_echo</span> Alice @ file1
+<span class="kw">./my_echo</span> Alice @@ file1
+<span class="kw">./my_cat</span> file1
+<span class="kw">./my_touch</span> file1</code></pre>
+<p>This lab consists of the following tasks:</p>
+<ol style="list-style-type: decimal">
+<li>Set up the project framework using Makefile</li>
+<li>Implement <code>my_printf</code> using file I/O</li>
+<li>Implement <code>my_echo</code></li>
+<li>Implement <code>my_echo</code> with redirection</li>
+<li>Implement <code>my_cat</code></li>
+<li><p>Implement <code>my_touch</code></p></li>
+<li><h2 id="framework-setup">Framework Setup</h2></li>
+</ol>
+<p>This project will include two types of source files: library program and main program. The library program will realize the core functions for <code>myshell</code> and the main program translates the <code>myshell</code> commands to the calls of these C functions.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">./main_printf.c</span>
+<span class="kw">./main_echo.c</span>
+<span class="kw">./main_cat.c</span>
+<span class="kw">./main_touch.c</span>
+<span class="kw">./Makefile</span>
+<span class="kw">./lib_myshell.c</span>
+<span class="kw">./header.h</span></code></pre>
+<ul>
+<li>Create a directory for this project.</li>
+<li>Write a Makefile [<a href="demo/apr18/Makefile">link</a>] that is compatible with the file organization as above.
+<ul>
+<li><code>make echo</code> will compile <code>main_echo.c</code> and <code>lib_myshell.c</code>.</li>
+<li><code>make echo</code> will generate executable <code>my_echo</code> and runs it by <code>./my_echo Alice @@ file1</code></li>
+</ul></li>
+</ul>
+<p>Makefile</p>
+<pre><code>SRCS = main_printf.c main_echo0.c main_echo.c main_cat.c myshell.c
+OBJS = $(SRCS:.c=.o)
+CFLAGS = -g -I..
+
+printf: $(OBJS)
+    $(CC) main_$@.o myshell.o 
+    ./a.out
+
+echo0: $(OBJS)
+    $(CC) main_$@.o myshell.o -o my_echo
+    ./my_echo Alice
+
+echo: $(OBJS)
+    $(CC) main_$@.o myshell.o -o my_echo
+    -rm file1 file2
+    ./my_echo Alice @ file1
+    ./my_echo Bob @@ file1
+    cat file1
+    ./my_echo Charlie @ file1
+    cat file1
+    ./my_echo David @@ file2
+    cat file2
+
+cat: $(OBJS)
+    $(CC) main_$@.o myshell.o -o my_cat
+    ./my_cat file1
+
+clean:
+    rm *.o *.out
+</code></pre>
+<h2 id="implement-my_printf">2. Implement <code>my_printf</code></h2>
+<ul>
+<li>Write a library function <code>void my_printf(char* str)</code> in <code>myshell.c</code>
+<ul>
+<li>write a function to get length of an array <code>int my_strlen(char* str)</code></li>
+</ul></li>
+<li>Write a main function in <code>main_printf.c</code>
+<ul>
+<li>The goal is to call <code>my_printf(&quot;Hello\n&quot;);</code> in <code>main_printf.c</code></li>
+</ul></li>
+</ul>
+<h2 id="implement-my_echo">3. Implement <code>my_echo</code></h2>
+<ul>
+<li>Write a library function <code>void my_echo(int fd, char* str)</code> in <code>myshell.c</code></li>
+<li>Write a main function in <code>main_echo.c</code>
+<ul>
+<li>The goal is to run command <code>./my_echo Alice</code></li>
+</ul></li>
+</ul>
+<h2 id="implement-my_echo-with-redirection">4. Implement <code>my_echo</code> with redirection</h2>
+<ul>
+<li>Write a library function <code>void my_echo(int fd, char* str)</code> in <code>myshell.c</code></li>
+<li>Write a main function in <code>main_echo.c</code>
+<ul>
+<li>The goal is to run command <code>./my_echo Alice @ file1</code></li>
+<li>and command <code>./my_echo Bob @@ file1</code></li>
+</ul></li>
+</ul>
+<h2 id="implement-my_cat">5. Implement <code>my_cat</code></h2>
+<ul>
+<li>Write a library function <code>void my_cat(char* filename)</code> in <code>myshell.c</code></li>
+<li>Write a main function in <code>main_cat.c</code>
+<ul>
+<li>The goal is to run command `./my_cat file1</li>
+</ul></li>
+</ul>
+<h2 id="implement-my_touch">6. Implement <code>my_touch</code></h2>
+<ul>
+<li>Write a library function <code>void my_touch(char* filename)</code> in <code>myshell.c</code></li>
+<li>Write a main function in <code>main_touch.c</code>
+<ul>
+<li>The goal is to run command <code>./my_touch file1</code></li>
+</ul></li>
+</ul>
+</body>
+</html>
