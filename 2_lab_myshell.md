@@ -23,7 +23,7 @@ This lab consists of the following tasks:
 5. Implement `my_cat`
 6. Implement `my_touch`
 
-1. Framework Setup
+1.Framework Setup
 ---
 
 This project will include two types of source files: library program and main program. The library program will realize the core functions for `myshell` and the main program translates the `myshell` commands to the calls of these C functions.
@@ -78,7 +78,7 @@ clean:
 
 ```
 
-2. Implement `my_printf` 
+2.Implement `my_printf` 
 ---
 
 - Write a library function `void my_printf(char* str)` in `myshell.c`
@@ -104,14 +104,14 @@ void my_printf(char* format_string);
 #endif
 ```
 
-3. Implement `my_echo` 
+3.Implement `my_echo` 
 ---
 
 - Write a library function `void my_echo(int fd, char* str)` in `myshell.c`
 - Write a main function in `main_echo.c`
     - The goal is to run command `./my_echo Alice`
 
-4. Implement `my_echo` with redirection
+4.Implement `my_echo` with redirection
 ---
 
 - Write a library function `void my_echo(int fd, char* str)` in `myshell.c`
@@ -119,14 +119,14 @@ void my_printf(char* format_string);
     - The goal is to run command `./my_echo Alice @ file1`
     - and command `./my_echo Bob @@ file1`
 
-5. Implement `my_cat`
+5.Implement `my_cat`
 ---
 
 - Write a library function `void my_cat(char* filename)` in `myshell.c`
 - Write a main function in `main_cat.c`
     - The goal is to run command `./my_cat file1
 
-6. Implement `my_touch`
+6.Implement `my_touch`
 ---
 
 - Write a library function `void my_touch(char* filename)` in `myshell.c`
