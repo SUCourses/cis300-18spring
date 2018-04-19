@@ -23,7 +23,7 @@ This lab consists of the following tasks:
 5. Implement `my_cat`
 6. Implement `my_touch`
 
-1. Framework Setup
+1.Framework Setup
 ---
 
 This project will include two types of source files: library program and main program. The library program will realize the core functions for `myshell` and the main program translates the `myshell` commands to the calls of these C functions.
@@ -39,7 +39,7 @@ This project will include two types of source files: library program and main pr
 ```
 
 - Create a directory for this project.
-- Write a Makefile [[link](demo/apr18/Makefile)] that is compatible with the file organization as above. 
+- Write a Makefile that is compatible with the file organization as above. 
     - `make echo` will compile `main_echo.c` and `lib_myshell.c`.
     - `make echo` will generate executable `my_echo` and runs it by `./my_echo Alice @@ file1`
 
@@ -75,17 +75,16 @@ cat: $(OBJS)
 
 clean:
 	rm *.o *.out
-
 ```
 
 2. Implement `my_printf` 
 ---
 
+- Write a function to find the length of an array `int my_strlen(char* str)`
 - Write a library function `void my_printf(char* str)` in `myshell.c`
-    - Write a function to get length of an array `int my_strlen(char* str)`
 - Write a main function in `main_printf.c`
     - The goal is to call `my_printf("Hello\n");` in  `main_printf.c`
-    - Put the following in file `header.h`
+- Put the following in file `header.h`
 
 ```c
 #if !defined(HEADER_H)
@@ -96,7 +95,6 @@ clean:
 #include <fcntl.h>
 #define FILE_MODE (S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)
 
-void err_sys(const char* x);
 int my_strlen(char* format_string);
 void my_echo(int fd, char* str);
 void my_printf(char* format_string);
@@ -132,4 +130,21 @@ void my_printf(char* format_string);
 - Write a library function `void my_touch(char* filename)` in `myshell.c`
 - Write a main function in `main_touch.c`
     - The goal is to run command `./my_touch file1`
+
+Programming references
+---
+
+- File I/O functions
+
+
+```c
+#include <fcntl.h>
+open(char* pathname, int oflag, mode_t mode);
+//open("file1", O_WRONLY | O_CREAT | O_APPEND, FILE_MODE);
+int creat(const char * pathname, mode_t mode);
+#include <unistd.h>
+ssize_t write(int fd, const void *buf, size_t nbytes);
+ssize_t read(int fd, void *buf, size_t nbytes);
+off_t lseek(int fd, off_t offset, int whence);
+```
 
