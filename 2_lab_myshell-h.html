@@ -27,14 +27,14 @@ code > span.er { color: #ff0000; font-weight: bold; }
   </style>
 </head>
 <body>
-<h1 id="lab-myshell---impl.-your-own-shell-in-c">Lab: Myshell - Impl. your own shell in C</h1>
+<h1 id="lab-myshell---impl.-your-own-shell-in-c">Lab: MyShell - Impl. your own shell in C</h1>
 <p>In this lab, you are asked to implement your own library to support the shell commands. We did an exercise in the last class where you implement basic <code>echo</code> command using File I/O functions in standard C library. In this lab, it is an extension to that exercise and you will implement shell commands for <code>cat</code>, redirection, <code>touch</code>.</p>
 <p>We call our shell commands with prefix <code>my_</code> and the following is what the outcome of this lab will look like. Note that we use <code>@</code> instead of <code>&gt;</code> to represent redirection in <code>myshell</code>.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">./my_cat</span> file1
-<span class="kw">./my_echo</span> Alice
-<span class="kw">./my_echo</span> Bob @ file1
-<span class="kw">./my_echo</span> Alice @@ file1
-<span class="kw">./my_touch</span> file1</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">./my_cat</span> file1           <span class="co"># cat file1</span>
+<span class="kw">./my_echo</span> Alice          <span class="co"># echo Alice</span>
+<span class="kw">./my_echo</span> Bob @ file1    <span class="co"># echo Bob &gt; file1</span>
+<span class="kw">./my_echo</span> Alice @@ file1 <span class="co"># echo Bob &gt;&gt; file1</span>
+<span class="kw">./my_touch</span> file1         <span class="co"># touch file1</span></code></pre>
 <p>This lab consists of the following tasks:</p>
 <ol style="list-style-type: decimal">
 <li>Set up the project framework using Makefile</li>
@@ -127,8 +127,10 @@ clean:
 <li>Write a library function <code>void my_echo(int fd, char* str)</code> in <code>myshell.c</code></li>
 <li>Write a main function in <code>main_echo.c</code>
 <ul>
-<li>The goal is to run command <code>./my_echo Alice @ file1</code></li>
-<li>and command <code>./my_echo Bob @@ file1</code></li>
+<li>The goal is to run commands <code>./my_echo Alice @ file1</code> and <code>./my_echo Bob @@ file1</code>
+<ul>
+<li>The two commands simulate <code>echo Alice &gt; file1; echo Bob &gt;&gt; file1</code></li>
+</ul></li>
 </ul></li>
 </ul>
 <h2 id="implement-my_cat">5.Implement <code>my_cat</code></h2>

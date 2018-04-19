@@ -1,4 +1,4 @@
-Lab: Myshell - Impl. your own shell in C
+Lab: MyShell - Impl. your own shell in C
 ===
 
 In this lab, you are asked to implement your own library to support the shell commands. We did an exercise in the last class where you implement basic `echo` command using File I/O functions in standard C library. In this lab, it is an extension to that exercise and you will implement shell commands for `cat`, redirection, `touch`. 
@@ -6,11 +6,11 @@ In this lab, you are asked to implement your own library to support the shell co
 We call our shell commands with prefix `my_` and the following is what the outcome of this lab will look like. Note that we use `@` instead of `>` to represent redirection in `myshell`.
 
 ```bash
-./my_cat file1
-./my_echo Alice
-./my_echo Bob @ file1
-./my_echo Alice @@ file1
-./my_touch file1
+./my_cat file1           # cat file1
+./my_echo Alice          # echo Alice
+./my_echo Bob @ file1    # echo Bob > file1
+./my_echo Alice @@ file1 # echo Bob >> file1
+./my_touch file1         # touch file1
 ```
 
 This lab consists of the following tasks:
@@ -113,8 +113,8 @@ void my_printf(char* format_string);
 
 - Write a library function `void my_echo(int fd, char* str)` in `myshell.c`
 - Write a main function in `main_echo.c`
-    - The goal is to run command `./my_echo Alice @ file1`
-    - and command `./my_echo Bob @@ file1`
+    - The goal is to run commands `./my_echo Alice @ file1` and `./my_echo Bob @@ file1`
+        - The two commands simulate `echo Alice > file1; echo Bob >> file1`
 
 5.Implement `my_cat`
 ---
