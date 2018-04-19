@@ -8,9 +8,8 @@ We call our shell commands with prefix `my_` and the following is what the outco
 ```bash
 ./my_cat file1
 ./my_echo Alice
-./my_echo Alice @ file1
+./my_echo Bob @ file1
 ./my_echo Alice @@ file1
-./my_cat file1
 ./my_touch file1
 ```
 
@@ -34,13 +33,13 @@ This project will include two types of source files: library program and main pr
 ./main_cat.c
 ./main_touch.c
 ./Makefile
-./lib_myshell.c
+./myshell.c
 ./header.h
 ```
 
 - Create a directory for this project.
 - Write a Makefile that is compatible with the file organization as above. 
-    - `make echo` will compile `main_echo.c` and `lib_myshell.c`.
+    - `make echo` will compile `main_echo.c` and `myshell.c`.
     - `make echo` will generate executable `my_echo` and runs it by `./my_echo Alice @@ file1`
 
 Makefile
@@ -77,7 +76,7 @@ clean:
 	rm *.o *.out
 ```
 
-2. Implement `my_printf` 
+2.Implement `my_printf` 
 ---
 
 - Write a function to find the length of an array `int my_strlen(char* str)`
@@ -102,14 +101,14 @@ void my_printf(char* format_string);
 #endif
 ```
 
-3. Implement `my_echo` 
+3.Implement `my_echo` 
 ---
 
 - Write a library function `void my_echo(int fd, char* str)` in `myshell.c`
 - Write a main function in `main_echo.c`
     - The goal is to run command `./my_echo Alice`
 
-4. Implement `my_echo` with redirection
+4.Implement `my_echo` with redirection
 ---
 
 - Write a library function `void my_echo(int fd, char* str)` in `myshell.c`
@@ -117,14 +116,14 @@ void my_printf(char* format_string);
     - The goal is to run command `./my_echo Alice @ file1`
     - and command `./my_echo Bob @@ file1`
 
-5. Implement `my_cat`
+5.Implement `my_cat`
 ---
 
 - Write a library function `void my_cat(char* filename)` in `myshell.c`
 - Write a main function in `main_cat.c`
-    - The goal is to run command `./my_cat file1
+    - The goal is to run command `./my_cat file1`
 
-6. Implement `my_touch`
+6.Implement `my_touch`
 ---
 
 - Write a library function `void my_touch(char* filename)` in `myshell.c`

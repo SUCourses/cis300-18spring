@@ -32,9 +32,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>We call our shell commands with prefix <code>my_</code> and the following is what the outcome of this lab will look like. Note that we use <code>@</code> instead of <code>&gt;</code> to represent redirection in <code>myshell</code>.</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">./my_cat</span> file1
 <span class="kw">./my_echo</span> Alice
-<span class="kw">./my_echo</span> Alice @ file1
+<span class="kw">./my_echo</span> Bob @ file1
 <span class="kw">./my_echo</span> Alice @@ file1
-<span class="kw">./my_cat</span> file1
 <span class="kw">./my_touch</span> file1</code></pre>
 <p>This lab consists of the following tasks:</p>
 <ol style="list-style-type: decimal">
@@ -43,22 +42,22 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li>Implement <code>my_echo</code></li>
 <li>Implement <code>my_echo</code> with redirection</li>
 <li>Implement <code>my_cat</code></li>
-<li><p>Implement <code>my_touch</code></p></li>
-<li><h2 id="framework-setup">Framework Setup</h2></li>
+<li>Implement <code>my_touch</code></li>
 </ol>
+<h2 id="framework-setup">1.Framework Setup</h2>
 <p>This project will include two types of source files: library program and main program. The library program will realize the core functions for <code>myshell</code> and the main program translates the <code>myshell</code> commands to the calls of these C functions.</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">./main_printf.c</span>
 <span class="kw">./main_echo.c</span>
 <span class="kw">./main_cat.c</span>
 <span class="kw">./main_touch.c</span>
 <span class="kw">./Makefile</span>
-<span class="kw">./lib_myshell.c</span>
+<span class="kw">./myshell.c</span>
 <span class="kw">./header.h</span></code></pre>
 <ul>
 <li>Create a directory for this project.</li>
-<li>Write a Makefile [<a href="demo/apr18/Makefile">link</a>] that is compatible with the file organization as above.
+<li>Write a Makefile that is compatible with the file organization as above.
 <ul>
-<li><code>make echo</code> will compile <code>main_echo.c</code> and <code>lib_myshell.c</code>.</li>
+<li><code>make echo</code> will compile <code>main_echo.c</code> and <code>myshell.c</code>.</li>
 <li><code>make echo</code> will generate executable <code>my_echo</code> and runs it by <code>./my_echo Alice @@ file1</code></li>
 </ul></li>
 </ul>
@@ -91,19 +90,16 @@ cat: $(OBJS)
     ./my_cat file1
 
 clean:
-    rm *.o *.out
-</code></pre>
-<h2 id="implement-my_printf">2. Implement <code>my_printf</code></h2>
+    rm *.o *.out</code></pre>
+<h2 id="implement-my_printf">2.Implement <code>my_printf</code></h2>
 <ul>
-<li>Write a library function <code>void my_printf(char* str)</code> in <code>myshell.c</code>
-<ul>
-<li>Write a function to get length of an array <code>int my_strlen(char* str)</code></li>
-</ul></li>
+<li>Write a function to find the length of an array <code>int my_strlen(char* str)</code></li>
+<li>Write a library function <code>void my_printf(char* str)</code> in <code>myshell.c</code></li>
 <li>Write a main function in <code>main_printf.c</code>
 <ul>
 <li>The goal is to call <code>my_printf(&quot;Hello\n&quot;);</code> in <code>main_printf.c</code></li>
-<li>Put the following in file <code>header.h</code></li>
 </ul></li>
+<li>Put the following in file <code>header.h</code></li>
 </ul>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#if !defined(HEADER_H)</span>
 <span class="ot">#define HEADER_H</span>
@@ -113,13 +109,12 @@ clean:
 <span class="ot">#include &lt;fcntl.h&gt;</span>
 <span class="ot">#define FILE_MODE (S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)</span>
 
-<span class="dt">void</span> err_sys(<span class="dt">const</span> <span class="dt">char</span>* x);
 <span class="dt">int</span> my_strlen(<span class="dt">char</span>* format_string);
 <span class="dt">void</span> my_echo(<span class="dt">int</span> fd, <span class="dt">char</span>* str);
 <span class="dt">void</span> my_printf(<span class="dt">char</span>* format_string);
 
 <span class="ot">#endif</span></code></pre>
-<h2 id="implement-my_echo">3. Implement <code>my_echo</code></h2>
+<h2 id="implement-my_echo">3.Implement <code>my_echo</code></h2>
 <ul>
 <li>Write a library function <code>void my_echo(int fd, char* str)</code> in <code>myshell.c</code></li>
 <li>Write a main function in <code>main_echo.c</code>
@@ -127,7 +122,7 @@ clean:
 <li>The goal is to run command <code>./my_echo Alice</code></li>
 </ul></li>
 </ul>
-<h2 id="implement-my_echo-with-redirection">4. Implement <code>my_echo</code> with redirection</h2>
+<h2 id="implement-my_echo-with-redirection">4.Implement <code>my_echo</code> with redirection</h2>
 <ul>
 <li>Write a library function <code>void my_echo(int fd, char* str)</code> in <code>myshell.c</code></li>
 <li>Write a main function in <code>main_echo.c</code>
@@ -136,15 +131,15 @@ clean:
 <li>and command <code>./my_echo Bob @@ file1</code></li>
 </ul></li>
 </ul>
-<h2 id="implement-my_cat">5. Implement <code>my_cat</code></h2>
+<h2 id="implement-my_cat">5.Implement <code>my_cat</code></h2>
 <ul>
 <li>Write a library function <code>void my_cat(char* filename)</code> in <code>myshell.c</code></li>
 <li>Write a main function in <code>main_cat.c</code>
 <ul>
-<li>The goal is to run command `./my_cat file1</li>
+<li>The goal is to run command <code>./my_cat file1</code></li>
 </ul></li>
 </ul>
-<h2 id="implement-my_touch">6. Implement <code>my_touch</code></h2>
+<h2 id="implement-my_touch">6.Implement <code>my_touch</code></h2>
 <ul>
 <li>Write a library function <code>void my_touch(char* filename)</code> in <code>myshell.c</code></li>
 <li>Write a main function in <code>main_touch.c</code>
@@ -152,5 +147,17 @@ clean:
 <li>The goal is to run command <code>./my_touch file1</code></li>
 </ul></li>
 </ul>
+<h2 id="programming-references">Programming references</h2>
+<ul>
+<li>File I/O functions</li>
+</ul>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;fcntl.h&gt;</span>
+open(<span class="dt">char</span>* pathname, <span class="dt">int</span> oflag, mode_t mode);
+<span class="co">//open(&quot;file1&quot;, O_WRONLY | O_CREAT | O_APPEND, FILE_MODE);</span>
+<span class="dt">int</span> creat(<span class="dt">const</span> <span class="dt">char</span> * pathname, mode_t mode);
+<span class="ot">#include &lt;unistd.h&gt;</span>
+ssize_t write(<span class="dt">int</span> fd, <span class="dt">const</span> <span class="dt">void</span> *buf, size_t nbytes);
+ssize_t read(<span class="dt">int</span> fd, <span class="dt">void</span> *buf, size_t nbytes);
+off_t lseek(<span class="dt">int</span> fd, off_t offset, <span class="dt">int</span> whence);</code></pre>
 </body>
 </html>
