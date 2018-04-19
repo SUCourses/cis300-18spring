@@ -41,6 +41,7 @@ This project will include two types of source files: library program and main pr
 - Write a Makefile that is compatible with the file organization as above. 
     - `make echo` will compile `main_echo.c` and `myshell.c`.
     - `make echo` will generate executable `my_echo` and runs it by `./my_echo Alice @@ file1`
+    - run commands `touch main_printf.c main_echo0.c main_echo.c main_cat.c myshell.c` 
 
 Makefile
 
