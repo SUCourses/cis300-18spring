@@ -50,4 +50,5 @@ Course materials
     - Lecture 20,21: File I/O
         - Exercise solution: [[src](demos/apr11/exercise.c)]
     - Lab `MyShell`: [[pdf](2_lab_myshell-h.pdf)],[[md](2_lab_myshell.md)]
+    - Lecture 22: Summary [[md](summary.md)]
 
