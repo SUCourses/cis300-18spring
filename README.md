@@ -49,6 +49,7 @@ Course materials
     - Lecture 18,19: C pointer and data types
     - Lecture 20,21: File I/O
         - Exercise solution: [[src](demos/apr11/exercise.c)]
-    - Lab `MyShell`: [[pdf](2_lab_myshell-h.pdf)],[[md](2_lab_myshell.md)]
+    - Lab exercise `MyShell`: [[pdf](2_lab_myshell-h.pdf)],[[md](2_lab_myshell.md)]
+        - Exercise tutorial (step-by-step instructions): [[doc](lab_tutorial.docx)]
     - Lecture 22: Summary [[md](summary.md)]
 
