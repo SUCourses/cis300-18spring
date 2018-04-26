@@ -25,7 +25,9 @@ This lab consists of the following tasks:
 1.Framework Setup
 ---
 
-This project will include two types of source files: library program and main program. The library program will realize the core functions for `myshell` and the main program translates the `myshell` commands to the calls of these C functions.
+This project will include two types of source files: library program and main program. The library program will realize the core functions for `myshell` and the main program translates the `myshell` commands to the calls of these C functions. 
+
+- Create a directory for this project and seven files in the directory as below: 
 
 ```bash
 ./main_printf.c
@@ -37,7 +39,6 @@ This project will include two types of source files: library program and main pr
 ./header.h
 ```
 
-- Create a directory for this project.
 - Write a Makefile that is compatible with the file organization as above. 
     - `make echo` will compile `main_echo.c` and `myshell.c`.
     - `make echo` will generate executable `my_echo` and runs it by `./my_echo Alice @@ file1`
@@ -46,8 +47,10 @@ This project will include two types of source files: library program and main pr
 Makefile
 
 ```
-SRCS = main_printf.c main_echo0.c main_echo.c main_cat.c myshell.c
+SRCS = main_printf.c main_echo0.c main_echo.c main_cat.c myshell.c 
+# the above line defines variable SRCS to be the list of c source programs.
 OBJS = $(SRCS:.c=.o)
+# the above line defines variable OBJS to be the list of object programs.
 CFLAGS = -g -I.
 
 printf: $(OBJS)
